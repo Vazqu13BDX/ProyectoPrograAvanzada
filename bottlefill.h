@@ -8,6 +8,7 @@
 #include <QPushButton>
 #include <QLabel>
 
+
 class QPushButton;
 class QProgressBar;
 //class QLabel:
@@ -17,6 +18,7 @@ class BottleFill : public QWidget
     Q_OBJECT
 
 public:
+
     explicit BottleFill(QWidget *parent = nullptr);
     ~BottleFill();
 

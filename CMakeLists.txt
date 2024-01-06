@@ -22,6 +22,11 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(ProyectoProgramacionAvanzada
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+        bottlefill.cpp bottlefill.h
+        Botellas_Label/Botellas_Label/1.png Botellas_Label/Botellas_Label/2.png Botellas_Label/Botellas_Label/3.png Botellas_Label/Botellas_Label/4.png Botellas_Label/Botellas_Label/5.png Lata_Label/Lata_Label/10.png Lata_Label/Lata_Label/6.png Lata_Label/Lata_Label/7.png Lata_Label/Lata_Label/8.png Lata_Label/Lata_Label/9.png
+        almacen.h almacen.cpp
+        envios.h envios.cpp
+
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET ProyectoProgramacionAvanzada APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

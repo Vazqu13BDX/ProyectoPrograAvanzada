@@ -1,12 +1,11 @@
 #include "bottlefill.h"
 #include <iostream>
+
 using namespace std;
 
 BottleFill::BottleFill(QWidget *parent)
     : QWidget(parent)
 {
-
-    setFixedSize(800, 600);
 
     timer1 = new QTimer{this};
     connect(timer1, SIGNAL(timeout()),this, SLOT(bottle_process()));
@@ -29,7 +28,7 @@ BottleFill::BottleFill(QWidget *parent)
     botellaLabel = new QLabel(this);
 
     // Carga la imagen
-    QPixmap imagen0("C:/Users/betan/Downloads/Botellas_Label (1).png");
+    QPixmap imagen0("C:/Users/juani/Documents/Programacion Avanzada/ProyectoProgramacionAvanzada/Botellas_Label (1).png");
     botellaLabel->setPixmap(imagen0.scaled(200,180,Qt::KeepAspectRatio));
     botellaLabel->setGeometry(0, 100, 500, 500);
 
@@ -62,7 +61,7 @@ BottleFill::BottleFill(QWidget *parent)
     //LATAS
 
     lataLabel = new QLabel(this);
-    QPixmap imagenA("C:/Users/betan/OneDrive/Documentos/UPIITA/3er Semestre/Programacion Avanzada/Embotelladora_Test_01/Nueva carpeta/6.png");
+    QPixmap imagenA("C:/Users/juani/Documents/Programacion Avanzada/ProyectoProgramacionAvanzada/Lata_Label/Lata_Label/6.png");
     lataLabel->setPixmap(imagenA.scaled(200,130,Qt::KeepAspectRatio));
     lataLabel->setGeometry(550, 140, 500, 500);
 
@@ -94,6 +93,7 @@ BottleFill::BottleFill(QWidget *parent)
 
 BottleFill::~BottleFill()
 {
+
 }
 
 void BottleFill::can_process()
@@ -145,27 +145,27 @@ void BottleFill::almacen_func1()
 void BottleFill::bottle_filler()
 {
     if (contador1 == 1) {
-    QPixmap imagen1("C:/Users/betan/OneDrive/Documentos/UPIITA/3er Semestre/Programacion Avanzada/Embotelladora_Test_01/Botellas_Label/1.png");
+    QPixmap imagen1("C:/Users/juani/Documents/Programacion Avanzada/ProyectoProgramacionAvanzada/Botellas_Label/Botellas_Label/1.png");
     botellaLabel->setPixmap(imagen1.scaled(200,180,Qt::KeepAspectRatio));
     botellaLabel->setGeometry(0, 100, 500, 500);
     } else if (contador1 == 2) {
-    QPixmap imagen2("C:/Users/betan/OneDrive/Documentos/UPIITA/3er Semestre/Programacion Avanzada/Embotelladora_Test_01/Botellas_Label/2.png");
+    QPixmap imagen2("C:/Users/juani/Documents/Programacion Avanzada/ProyectoProgramacionAvanzada/Botellas_Label/Botellas_Label/2.png");
     botellaLabel->setPixmap(imagen2.scaled(200,180,Qt::KeepAspectRatio));
     botellaLabel->setGeometry(0, 100, 500, 500);
     } else if (contador1 == 3) {
-    QPixmap imagen3("C:/Users/betan/OneDrive/Documentos/UPIITA/3er Semestre/Programacion Avanzada/Embotelladora_Test_01/Botellas_Label/3.png");
+    QPixmap imagen3("C:/Users/juani/Documents/Programacion Avanzada/ProyectoProgramacionAvanzada/Botellas_Label/Botellas_Label/3.png");
     botellaLabel->setPixmap(imagen3.scaled(200,180,Qt::KeepAspectRatio));
     botellaLabel->setGeometry(0, 100, 500, 500);
     } else if (contador1 == 4) {
-    QPixmap imagen3("C:/Users/betan/OneDrive/Documentos/UPIITA/3er Semestre/Programacion Avanzada/Embotelladora_Test_01/Botellas_Label/4.png");
+    QPixmap imagen3("C:/Users/juani/Documents/Programacion Avanzada/ProyectoProgramacionAvanzada/Botellas_Label/Botellas_Label/4.png");
     botellaLabel->setPixmap(imagen3.scaled(200,180,Qt::KeepAspectRatio));
      botellaLabel->setGeometry(0, 100, 500, 500);
     }else if (contador1 == 5) {
-    QPixmap imagen3("C:/Users/betan/OneDrive/Documentos/UPIITA/3er Semestre/Programacion Avanzada/Embotelladora_Test_01/Botellas_Label/5.png");
+    QPixmap imagen3("C:/Users/juani/Documents/Programacion Avanzada/ProyectoProgramacionAvanzada/Botellas_Label/Botellas_Label/5.png");
     botellaLabel->setPixmap(imagen3.scaled(200,180,Qt::KeepAspectRatio));
     botellaLabel->setGeometry(0, 100, 500, 500);
     }else if (contador1 == 6) {
-    QPixmap imagen6("C:/Users/betan/Downloads/Botellas_Label (1).png");
+    QPixmap imagen6("C:/Users/juani/Documents/Programacion Avanzada/ProyectoProgramacionAvanzada/Botellas_Label (1).png");
     botellaLabel->setPixmap(imagen6.scaled(200,180,Qt::KeepAspectRatio));
     botellaLabel->setGeometry(0, 100, 500, 500);
     }
@@ -193,23 +193,23 @@ void BottleFill::bottle_filler()
 void BottleFill::can_filler()
 {
     if (contador2 == 1) {
-    QPixmap imagenB("C:/Users/betan/OneDrive/Documentos/UPIITA/3er Semestre/Programacion Avanzada/Embotelladora_Test_01/Nueva carpeta/7.png");
+    QPixmap imagenB("C:/Users/juani/Documents/Programacion Avanzada/ProyectoProgramacionAvanzada/Lata_Label/Lata_Label/7.png");
     lataLabel->setPixmap(imagenB.scaled(200,130,Qt::KeepAspectRatio));
     lataLabel->setGeometry(550, 140, 500, 500);
     } else if (contador2 == 2) {
-    QPixmap imagenC("C:/Users/betan/OneDrive/Documentos/UPIITA/3er Semestre/Programacion Avanzada/Embotelladora_Test_01/Nueva carpeta/8.png");
+    QPixmap imagenC("C:/Users/juani/Documents/Programacion Avanzada/ProyectoProgramacionAvanzada/Lata_Label/Lata_Label/8.png");
     lataLabel->setPixmap(imagenC.scaled(200,130,Qt::KeepAspectRatio));
      lataLabel->setGeometry(550, 140, 500, 500);
     } else if (contador2 == 3) {
-    QPixmap imagenD("C:/Users/betan/OneDrive/Documentos/UPIITA/3er Semestre/Programacion Avanzada/Embotelladora_Test_01/Nueva carpeta/9.png");
+    QPixmap imagenD("C:/Users/juani/Documents/Programacion Avanzada/ProyectoProgramacionAvanzada/Lata_Label/Lata_Label/9.png");
     lataLabel->setPixmap(imagenD.scaled(200,130,Qt::KeepAspectRatio));
     lataLabel->setGeometry(550, 140, 500, 500);
     } else if (contador2 == 4) {
-    QPixmap imagenE("C:/Users/betan/OneDrive/Documentos/UPIITA/3er Semestre/Programacion Avanzada/Embotelladora_Test_01/Nueva carpeta/10.png");
+    QPixmap imagenE("C:/Users/juani/Documents/Programacion Avanzada/ProyectoProgramacionAvanzada/Lata_Label/Lata_Label/10.png");
     lataLabel->setPixmap(imagenE.scaled(200,130,Qt::KeepAspectRatio));
      lataLabel->setGeometry(550, 140, 500, 500);
     }else if (contador2 == 5) {
-    QPixmap imagenF("C:/Users/betan/OneDrive/Documentos/UPIITA/3er Semestre/Programacion Avanzada/Embotelladora_Test_01/Nueva carpeta/6.png");
+    QPixmap imagenF("C:/Users/juani/Documents/Programacion Avanzada/ProyectoProgramacionAvanzada/Lata_Label/Lata_Label/6.png");
     lataLabel->setPixmap(imagenF.scaled(200,130,Qt::KeepAspectRatio));
     lataLabel->setGeometry(550, 140, 500, 500);
     }

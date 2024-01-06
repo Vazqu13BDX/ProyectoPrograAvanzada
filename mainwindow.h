@@ -3,14 +3,23 @@
 
 #include <QMainWindow>
 #include <QtWidgets>
+#include <QLabel>
+#include <QPushButton>
+#include <QTabWidget>
 
-class QAction;
+#include "bottlefill.h"
+#include "almacen.h"
+#include "envios.h"
+
 class QTabBar;
 class QLabel;
+class QPushButton;
+
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
+
 private:
     QTabBar *tab_bar;
 
@@ -26,16 +35,28 @@ private:
     QLabel *labelPestana3;
     QVBoxLayout *layoutPestana3;
 
+    QWidget *cont;
+    QLabel *mens;
+    QVBoxLayout *layoutmensaje;
+    QVBoxLayout *layoutcont;
+
     QVBoxLayout *layoutPrincipal;
     QWidget *centralWidget;
 
+   BottleFill *bottle{new BottleFill};
+   Almacen *almac{new Almacen};
+   Envios *env{new Envios};
+
 public:
+
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void inicioPlanta();
+    void llamadoPagina(int llamada);
 
 public slots:
+
     void cambiarPestana(int index);
-private slots:
 
 };
 #endif // MAINWINDOW_H
