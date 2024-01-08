@@ -21,12 +21,12 @@ MainWindow::MainWindow(QWidget *parent)
     layoutPestana1->addWidget(labelPestana1);
 
     contenidoPestana2 = new QWidget(this);
-    labelPestana2 = new QLabel("Para iniciar de click en el boton de Iniciar Planta", contenidoPestana2);
+    labelPestana2 = new QLabel("Para iniciar de click en cualquier pestaña", contenidoPestana2);
     layoutPestana2 = new QVBoxLayout(contenidoPestana2);
     layoutPestana2->addWidget(labelPestana2);
 
     contenidoPestana3 = new QWidget(this);
-    labelPestana3= new QLabel("Traer Una", contenidoPestana3);
+    labelPestana3= new QLabel("", contenidoPestana3);
     layoutPestana3= new QVBoxLayout(contenidoPestana3);
     layoutPestana3-> addWidget(labelPestana3);
 
