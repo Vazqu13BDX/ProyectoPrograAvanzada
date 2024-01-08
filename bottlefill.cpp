@@ -21,7 +21,7 @@ BottleFill::BottleFill(QWidget *parent)
     botellaLabel = new QLabel(this);
 
     // Carga la imagen del archivo de recursos images.qrc
-    QPixmap imagen0(":/Images/botella_1.png");
+    QPixmap imagen0(":/Botellas_Label(1).png");
     botellaLabel->setPixmap(imagen0.scaled(200,180,Qt::KeepAspectRatio));
     botellaLabel->setGeometry(50, 100, 500, 500);
 
@@ -47,14 +47,14 @@ BottleFill::BottleFill(QWidget *parent)
     labelBotellasLlenadas->setGeometry(10, 170, 150, 20);
 
     labelBotellasAlmacen = new QLabel("Botellas en Almacén: 0", this);
-    labelBotellasAlmacen->setGeometry(140, 170, 150, 20);
+                           labelBotellasAlmacen->setGeometry(140, 170, 150, 20);
 
 
 
     //LATAS
 
     lataLabel = new QLabel(this);
-    QPixmap imagenA(":/Images/lata_1.png");
+    QPixmap imagenA(":/Lata_Label/10.png");
     lataLabel->setPixmap(imagenA.scaled(200,130,Qt::KeepAspectRatio));
     lataLabel->setGeometry(550, 140, 500, 500);
 
@@ -80,7 +80,7 @@ BottleFill::BottleFill(QWidget *parent)
     labelLatasLlenadas->setGeometry(510, 170, 150, 20);
 
     labelLatasAlmacen = new QLabel("latas en Almacén: 0", this);
-    labelLatasAlmacen->setGeometry(640, 170, 150, 20);
+                        labelLatasAlmacen->setGeometry(640, 170, 150, 20);
 
 }
 
@@ -123,12 +123,12 @@ void BottleFill::almacen_func1()
 {
     if(botellas==3)
     {
-    botellas_almacen++;
+        botellas_almacen++;
         reset_timer1();
     }
     else
     {
-    qInfo() << "Aun No hay suficientes botellas para pasarlas a almacen";
+        qInfo() << "Aun No hay suficientes botellas para pasarlas a almacen";
     }
     labelBotellasAlmacen->setText("Botellas en Almacen: " + QString::number(botellas_almacen));
 
@@ -137,46 +137,46 @@ void BottleFill::almacen_func1()
 void BottleFill::bottle_filler()
 {
     if (contador1 == 1) {
-    QPixmap imagen(":/Images/botella_2.png");
-    botellaLabel->setPixmap(imagen.scaled(200,180,Qt::KeepAspectRatio));
-    botellaLabel->setGeometry(50, 100, 500, 500);
+        QPixmap imagen(":/Botellas_Label/1.png");
+        botellaLabel->setPixmap(imagen.scaled(200,180,Qt::KeepAspectRatio));
+        botellaLabel->setGeometry(50, 100, 500, 500);
     } else if (contador1 == 2) {
-    QPixmap imagen(":/Images/botella_3.png");
-    botellaLabel->setPixmap(imagen.scaled(200,180,Qt::KeepAspectRatio));
-    botellaLabel->setGeometry(50, 100, 500, 500);
+        QPixmap imagen(":/Botellas_Label/2.png");
+        botellaLabel->setPixmap(imagen.scaled(200,180,Qt::KeepAspectRatio));
+        botellaLabel->setGeometry(50, 100, 500, 500);
     } else if (contador1 == 3) {
-    QPixmap imagen(":/Images/botella_4.png");
-    botellaLabel->setPixmap(imagen.scaled(200,180,Qt::KeepAspectRatio));
-    botellaLabel->setGeometry(50, 100, 500, 500);
+        QPixmap imagen(":/Botellas_Label/3.png");
+        botellaLabel->setPixmap(imagen.scaled(200,180,Qt::KeepAspectRatio));
+        botellaLabel->setGeometry(50, 100, 500, 500);
     } else if (contador1 == 4) {
-    QPixmap imagen(":/Images/botella_5.png");
-    botellaLabel->setPixmap(imagen.scaled(200,180,Qt::KeepAspectRatio));
-    botellaLabel->setGeometry(50, 100, 500, 500);
+        QPixmap imagen(":/Botellas_Label/4.png");
+        botellaLabel->setPixmap(imagen.scaled(200,180,Qt::KeepAspectRatio));
+        botellaLabel->setGeometry(50, 100, 500, 500);
     }else if (contador1 == 5) {
-    QPixmap imagen(":/Images/botella_6.png");
-    botellaLabel->setPixmap(imagen.scaled(200,180,Qt::KeepAspectRatio));
-    botellaLabel->setGeometry(50, 100, 500, 500);
+        QPixmap imagen(":/Botellas_Label/5.png");
+        botellaLabel->setPixmap(imagen.scaled(200,180,Qt::KeepAspectRatio));
+        botellaLabel->setGeometry(50, 100, 500, 500);
     }else if (contador1 == 6) {
-    QPixmap imagen(":/Images/botella_1.png");
-    botellaLabel->setPixmap(imagen.scaled(200,180,Qt::KeepAspectRatio));
-    botellaLabel->setGeometry(50, 100, 500, 500);
+        QPixmap imagen(":/Botellas_Label(1).png");
+        botellaLabel->setPixmap(imagen.scaled(200,180,Qt::KeepAspectRatio));
+        botellaLabel->setGeometry(50, 100, 500, 500);
     }
 
 
     if(contador1 == 6)
     {
-    botellas++;
-    qInfo() << "botellas llenadas: " << botellas;
-    contador1 = 0;
-    labelBotellasLlenadas->setText("Botellas Llenadas: " + QString::number(botellas));
+        botellas++;
+        qInfo() << "botellas llenadas: " << botellas;
+        contador1 = 0;
+        labelBotellasLlenadas->setText("Botellas Llenadas: " + QString::number(botellas));
 
     }
 
     if(botellas == 3)
     {
-    timer1->stop();
-    qInfo() << "Se ha completado todo un paquete de botellas";
-    qInfo() << "Desea pasarlas al almacen?";
+        timer1->stop();
+        qInfo() << "Se ha completado todo un paquete de botellas";
+        qInfo() << "Desea pasarlas al almacen?";
     }
 }
 
@@ -185,41 +185,41 @@ void BottleFill::bottle_filler()
 void BottleFill::can_filler()
 {
     if (contador2 == 1) {
-    QPixmap imagenB(":/Images/lata_2.png");
-    lataLabel->setPixmap(imagenB.scaled(200,130,Qt::KeepAspectRatio));
-    lataLabel->setGeometry(550, 140, 500, 500);
+        QPixmap imagenB(":/Lata_Label/6.png");
+        lataLabel->setPixmap(imagenB.scaled(200,130,Qt::KeepAspectRatio));
+        lataLabel->setGeometry(550, 140, 500, 500);
     } else if (contador2 == 2) {
-    QPixmap imagenC(":/Images/lata_3.png");
-    lataLabel->setPixmap(imagenC.scaled(200,130,Qt::KeepAspectRatio));
-     lataLabel->setGeometry(550, 140, 500, 500);
+        QPixmap imagenC(":/Lata_Label/7.png");
+        lataLabel->setPixmap(imagenC.scaled(200,130,Qt::KeepAspectRatio));
+        lataLabel->setGeometry(550, 140, 500, 500);
     } else if (contador2 == 3) {
-    QPixmap imagenD(":/Images/lata_4.png");
-    lataLabel->setPixmap(imagenD.scaled(200,130,Qt::KeepAspectRatio));
-    lataLabel->setGeometry(550, 140, 500, 500);
+        QPixmap imagenD(":/Lata_Label/8.png");
+        lataLabel->setPixmap(imagenD.scaled(200,130,Qt::KeepAspectRatio));
+        lataLabel->setGeometry(550, 140, 500, 500);
     } else if (contador2 == 4) {
-    QPixmap imagenE(":/Images/lata_5.png");
-    lataLabel->setPixmap(imagenE.scaled(200,130,Qt::KeepAspectRatio));
-     lataLabel->setGeometry(550, 140, 500, 500);
+        QPixmap imagenE(":/Lata_Label/9.png");
+        lataLabel->setPixmap(imagenE.scaled(200,130,Qt::KeepAspectRatio));
+        lataLabel->setGeometry(550, 140, 500, 500);
     }else if (contador2 == 5) {
-    QPixmap imagenF(":/Images/lata_1.png");
-    lataLabel->setPixmap(imagenF.scaled(200,130,Qt::KeepAspectRatio));
-    lataLabel->setGeometry(550, 140, 500, 500);
+        QPixmap imagenF(":/Lata_Label/10.png");
+        lataLabel->setPixmap(imagenF.scaled(200,130,Qt::KeepAspectRatio));
+        lataLabel->setGeometry(550, 140, 500, 500);
     }
 
     if(contador2 == 5)
     {
-    latas++;
-    qInfo() << "latas llenadas: " << latas;
-    contador2 = 0;
-    labelLatasLlenadas->setText("LatasLlenadas: " + QString::number(latas));
+        latas++;
+        qInfo() << "latas llenadas: " << latas;
+        contador2 = 0;
+        labelLatasLlenadas->setText("LatasLlenadas: " + QString::number(latas));
 
     }
 
     if(latas == 6)
     {
-    timer2->stop();
-    qInfo() << "Se ha completado todo un paquete de latas";
-    qInfo() << "Desea pasarlas al almacen?";
+        timer2->stop();
+        qInfo() << "Se ha completado todo un paquete de latas";
+        qInfo() << "Desea pasarlas al almacen?";
     }
 }
 
@@ -245,15 +245,13 @@ void BottleFill::almacen_func2()
 {
     if(latas==6)
     {
-    latas_almacen++;
-    reset_timer2();
+        latas_almacen++;
+        reset_timer2();
     }
     else
     {
-    qInfo() << "Aun no hay suficientes latas para pasarlas a almacen";
+        qInfo() << "Aun no hay suficientes latas para pasarlas a almacen";
     }
     labelLatasAlmacen->setText("Latas en Almacen: " + QString::number(latas_almacen));
 
 }
-
-

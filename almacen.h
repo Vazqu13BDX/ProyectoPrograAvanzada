@@ -4,26 +4,28 @@
 #include <QMainWindow>
 #include <QObject>
 #include <QWidget>
-
 #include "bottlefill.h"
+
 
 class QLabel;
 class QWidget;
 class QVBoxLayout;
-
+class QProgressBar;
 
 class Almacen: public QWidget
 {
+
 private:
-    QWidget *almacen;
-    QVBoxLayout *layout1;
-
-    QLabel *informacionL;
-
-
+  QWidget *centralWidget;
+  QVBoxLayout *layoutPrincipal;
+  QLabel *informacionL;
+  QLabel *informacionL1;
+  QProgressBar *barra;
+  QProgressBar *barra1;
 
 public:
-    explicit Almacen(QWidget *parent= nullptr);
+
+    Almacen(QWidget *parent= nullptr);
     ~Almacen();
 
 };

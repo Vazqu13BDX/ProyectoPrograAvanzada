@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Botellas_Label/1.png</file>
+        <file>Botellas_Label/2.png</file>
+        <file>Botellas_Label/3.png</file>
+        <file>Botellas_Label/4.png</file>
+        <file>Botellas_Label/5.png</file>
+        <file>Botellas_Label (1).png</file>
+        <file>Lata_Label/6.png</file>
+        <file>Lata_Label/7.png</file>
+        <file>Lata_Label/8.png</file>
+        <file>Lata_Label/9.png</file>
+        <file>Lata_Label/10.png</file>
+    </qresource>
+</RCC>

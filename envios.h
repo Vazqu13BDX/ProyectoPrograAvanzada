@@ -1,21 +1,24 @@
 #ifndef ENVIOS_H
 #define ENVIOS_H
-#include "envios.h"
-
-#include <QMainWindow>
-#include <QtWidgets>
-#include <QWidget>
-
+#include "bottlefill.h"
 
 class QLabel;
+class QWidget;
+class QVBoxLayout;
+class QProgressBar;
 
 class Envios: public QWidget
 {   Q_OBJECT
 private:
-     QLabel *informacionL;
+
+    QProgressBar *barra;
+
+    QWidget *central;
+    QVBoxLayout *layout;
+    QLabel *info;
 
 public:
-    explicit Envios(QWidget *parent =nullptr);
+    Envios(QWidget *parent =nullptr);
     ~Envios();
 };
 

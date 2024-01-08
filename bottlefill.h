@@ -63,5 +63,6 @@ private slots:
 public:
     void bottle_filler();
     void can_filler();
+    friend class Almacen;
 };
 #endif // BOTTLEFILL_H

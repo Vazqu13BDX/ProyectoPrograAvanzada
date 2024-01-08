@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+
+#include <QMainWindow>
 #include <QtWidgets>
 #include <QLabel>
 #include <QPushButton>
@@ -10,6 +12,7 @@
 #include "bottlefill.h"
 #include "almacen.h"
 #include "envios.h"
+
 
 class QTabBar;
 class QLabel;
@@ -35,17 +38,20 @@ private:
     QLabel *labelPestana3;
     QVBoxLayout *layoutPestana3;
 
-    QWidget *cont;
-    QLabel *mens;
-    QVBoxLayout *layoutmensaje;
-    QVBoxLayout *layoutcont;
-
     QVBoxLayout *layoutPrincipal;
     QWidget *centralWidget;
 
-   BottleFill *bottle{new BottleFill};
-   Almacen *almac{new Almacen};
-   Envios *env{new Envios};
+
+    QWidget *cont;
+    QLabel *mens;
+    QVBoxLayout *layoutcont;
+
+    int i{0};
+
+    BottleFill *bottle{new BottleFill};
+    Almacen *almacen{new Almacen};
+    Envios *envios{new Envios};
+
 
 public:
 
@@ -57,6 +63,5 @@ public:
 public slots:
 
     void cambiarPestana(int index);
-
 };
 #endif // MAINWINDOW_H

@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent)
     layoutPestana1->addWidget(labelPestana1);
 
     contenidoPestana2 = new QWidget(this);
-    labelPestana2 = new QLabel("Para iniciar de click en el boton de Iniciar PLanta", contenidoPestana2);
+    labelPestana2 = new QLabel("Para iniciar de click en el boton de Iniciar Planta", contenidoPestana2);
     layoutPestana2 = new QVBoxLayout(contenidoPestana2);
     layoutPestana2->addWidget(labelPestana2);
 
@@ -43,13 +43,13 @@ MainWindow::MainWindow(QWidget *parent)
     setCentralWidget(centralWidget);
 
     bottle= new BottleFill;
-    almac= new Almacen;
-    env= new Envios;
+    almacen= new Almacen;
+    envios= new Envios;
 
 }
 void MainWindow::cambiarPestana(int index){
 
-    if (index == 0) {           // Cambiar el contenido de la ventana según la pestaña seleccionada
+    if (index == 0) {
         llamadoPagina(1);
     }
     else if (index == 1) {
@@ -65,52 +65,38 @@ MainWindow::~MainWindow(){
 }
 
 void MainWindow::llamadoPagina(int llamada)
-{   layoutPrincipal->removeWidget(contenidoPestana1);
-    layoutPrincipal->removeWidget(contenidoPestana2);
-    layoutPrincipal->removeWidget(contenidoPestana3);
-    labelPestana1->setText("");
-    labelPestana2->setText("");
-    labelPestana3->setText("");
-    switch (llamada) {
-    case 1:
-        layoutPrincipal->removeWidget(contenidoPestana1);
-        layoutPrincipal->removeWidget(contenidoPestana2);
-        layoutPrincipal->removeWidget(contenidoPestana3);
-        layoutPrincipal->removeWidget(almac);
-        layoutPrincipal->removeWidget(env);
+{
+    if (i==0){
+        delete contenidoPestana1;
+        delete contenidoPestana2;
+        delete contenidoPestana3;
+        i=1;
+    }
+    if(llamada==1){
+        bottle->show();
+        almacen->hide();
+        envios->hide();
         layoutPrincipal->addWidget(tab_bar);
         layoutPrincipal->addWidget(bottle);
-
         centralWidget->setLayout(layoutPrincipal);
 
-        break;
-    case 2:
-        bottle->hide();
-        layoutPrincipal->removeWidget(contenidoPestana1);
-        layoutPrincipal->removeWidget(contenidoPestana2);
-        layoutPrincipal->removeWidget(contenidoPestana3);
-        layoutPrincipal->removeWidget(bottle);
-        layoutPrincipal->removeWidget(env);
-        layoutPrincipal->addWidget(tab_bar);
-        layoutPrincipal->addWidget(almac);
-
-        centralWidget->setLayout(layoutPrincipal);
-
-        break;
-    case 3:
-        bottle->hide();
-        layoutPrincipal->removeWidget(contenidoPestana1);
-        layoutPrincipal->removeWidget(contenidoPestana2);
-        layoutPrincipal->removeWidget(contenidoPestana3);
-        layoutPrincipal->removeWidget(bottle);
-        layoutPrincipal->removeWidget(env);
-        layoutPrincipal->addWidget(tab_bar);
-        layoutPrincipal->addWidget(env);
-
-        centralWidget->setLayout(layoutPrincipal);
-
-        break;
-    default:
-        break;
     }
+    else if(llamada==2){
+        bottle->hide();
+        almacen->show();
+        envios->hide();
+        layoutPrincipal->addWidget(tab_bar);
+        layoutPrincipal->addWidget(almacen);
+        centralWidget->setLayout(layoutPrincipal);
+
+    }
+    else if(llamada==3){
+        bottle->hide();
+        envios->show();
+        almacen->hide();
+        layoutPrincipal->addWidget(tab_bar);
+        layoutPrincipal->addWidget(envios);
+        centralWidget->setLayout(layoutPrincipal);
+    }
+
 }
