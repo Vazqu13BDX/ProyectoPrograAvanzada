@@ -19,7 +19,7 @@ BottleFill::BottleFill(QWidget *parent)
     //-----------------------Main Labels--------------------------------imagenes-----------
 
     botellaLabel = new QLabel(this);
-    QPixmap imagen0(":/Images/lata_1.png"); // Carga la imagen del archivo de recursos images.qrc
+    QPixmap imagen0(":/Images/botella_1"); // Carga la imagen del archivo de recursos images.qrc
     botellaLabel->setPixmap(imagen0.scaled(200,180,Qt::KeepAspectRatio));
     botellaLabel->setGeometry(50, 100, 500, 500);
 
