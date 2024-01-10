@@ -10,7 +10,6 @@
 #include <QTabWidget>
 
 #include "bottlefill.h"
-#include "almacen.h"
 #include "envios.h"
 
 
@@ -34,10 +33,6 @@ private:
     QLabel *labelPestana2;
     QVBoxLayout *layoutPestana2;
 
-    QWidget *contenidoPestana3;
-    QLabel *labelPestana3;
-    QVBoxLayout *layoutPestana3;
-
     QVBoxLayout *layoutPrincipal;
     QWidget *centralWidget;
 
@@ -49,7 +44,6 @@ private:
     int i{0};
 
     BottleFill *bottle{new BottleFill};
-    Almacen *almacen{new Almacen};
     Envios *envios{new Envios};
 
 
@@ -59,6 +53,7 @@ public:
     ~MainWindow();
     void inicioPlanta();
     void llamadoPagina(int llamada);
+
 
 public slots:
 

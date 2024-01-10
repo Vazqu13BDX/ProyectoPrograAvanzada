@@ -10,7 +10,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     tab_bar = new QTabBar(this);
     tab_bar->addTab("Proceso");
-    tab_bar->addTab("Almacen");
     tab_bar->addTab("Envios y Rastreo");
     connect(tab_bar, SIGNAL(currentChanged(int)), this, SLOT(cambiarPestana(int)));
 
@@ -25,26 +24,21 @@ MainWindow::MainWindow(QWidget *parent)
     layoutPestana2 = new QVBoxLayout(contenidoPestana2);
     layoutPestana2->addWidget(labelPestana2);
 
-    contenidoPestana3 = new QWidget(this);
-    labelPestana3= new QLabel("", contenidoPestana3);
-    layoutPestana3= new QVBoxLayout(contenidoPestana3);
-    layoutPestana3-> addWidget(labelPestana3);
-
 
     // Crear el diseño principal
     layoutPrincipal = new QVBoxLayout();
     layoutPrincipal->addWidget(tab_bar);
     layoutPrincipal->addWidget(contenidoPestana1);
     layoutPrincipal->addWidget(contenidoPestana2);
-    layoutPrincipal->addWidget(contenidoPestana3);
 
     centralWidget = new QWidget(this);
     centralWidget->setLayout(layoutPrincipal);
     setCentralWidget(centralWidget);
 
     bottle= new BottleFill;
-    almacen= new Almacen;
     envios= new Envios;
+
+    connect(bottle, &BottleFill::sendALmacen, envios, &Envios::recibeAlmacen);
 
 }
 void MainWindow::cambiarPestana(int index){
@@ -54,9 +48,6 @@ void MainWindow::cambiarPestana(int index){
     }
     else if (index == 1) {
         llamadoPagina(2);
-    }
-    else if (index == 2){
-        llamadoPagina(3);
     }
 
 }
@@ -69,12 +60,10 @@ void MainWindow::llamadoPagina(int llamada)
     if (i==0){
         delete contenidoPestana1;
         delete contenidoPestana2;
-        delete contenidoPestana3;
         i=1;
     }
     if(llamada==1){
         bottle->show();
-        almacen->hide();
         envios->hide();
         layoutPrincipal->addWidget(tab_bar);
         layoutPrincipal->addWidget(bottle);
@@ -83,20 +72,12 @@ void MainWindow::llamadoPagina(int llamada)
     }
     else if(llamada==2){
         bottle->hide();
-        almacen->show();
-        envios->hide();
-        layoutPrincipal->addWidget(tab_bar);
-        layoutPrincipal->addWidget(almacen);
-        centralWidget->setLayout(layoutPrincipal);
-
-    }
-    else if(llamada==3){
-        bottle->hide();
         envios->show();
-        almacen->hide();
         layoutPrincipal->addWidget(tab_bar);
         layoutPrincipal->addWidget(envios);
         centralWidget->setLayout(layoutPrincipal);
+        //connect(bottle, &BottleFill::sendALmacen, envios, &Envios::recibeAlmacen);
+
     }
 
 }

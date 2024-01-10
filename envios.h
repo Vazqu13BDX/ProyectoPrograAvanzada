@@ -19,8 +19,6 @@ private:
 
     QProgressBar *barra;
 
-    QWidget *central;
-    QVBoxLayout *layout;
     QLabel *info;
 
     QLineEdit *numberInput;
@@ -31,9 +29,12 @@ private:
 public:
     Envios(QWidget *parent =nullptr);
     ~Envios();
-
+    friend class MainWindow;
+    almacen();
 private slots:
     void onProjectionButtonClicked();
+    void onProjectionButtonClicked1();
+    void recibeAlmacen(int bott, int lat );
 };
 
 #endif // ENVIOS_H

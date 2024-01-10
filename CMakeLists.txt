@@ -22,10 +22,13 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(Proyecto
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
-        almacen.h almacen.cpp
+
         bottlefill.h bottlefill.cpp
-        envios.h envios.cpp
-        imagenes.qrc
+
+
+        envios.h
+        envios.cpp
+        Imagenes.qrc
 
     )
 # Define target properties for Android with Qt 6 as:
