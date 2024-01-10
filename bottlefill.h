@@ -26,40 +26,46 @@ private:
     //Botellas
     QProgressBar *barra;
     QProgressBar *barra1;
-    QTimer *timer1;  // Temporizador para el proceso de llenado de botellas
-    QPushButton *reset1;  // Botón para reiniciar el temporizador de botellas
-    QPushButton *stop1;   // Botón para detener el temporizador de botellas
-    QPushButton *almacen1;  // Botón para almacenar botellas llenadas
-    QPushButton *continuar1;  // Botón para continuar el temporizador de botellas
-    int contador1{};  // Contador de botellas llenadas
-    int botellas{};   // Número total de botellas a llenar
-    int botellas_almacen{};  // Número de botellas almacenadas
-    QLabel *labelBotellasLlenadas;  // Etiqueta para mostrar la cantidad de botellas llenadas
-    QLabel *labelBotellasAlmacen;   // Etiqueta para mostrar la cantidad de botellas almacenadas
-    QLabel *botellaLabel;  // Etiqueta para indicar el tipo de contenedor (botella)
+    QTimer *timer1;
+    QPushButton *reset1;
+    QPushButton *stop1;
+    QPushButton *almacen1;
+    QPushButton *continuar1;
+    int contador1{};
+    int botellas{};
+    int botellas_almacen{};
+    QLabel *labelBotellasLlenadas;
+    QLabel *labelBotellasAlmacen;
+    QLabel *botellaLabel;
+
+    QLabel *alarma_stopBotella;
+    QLabel *alarma_stopLata;
+    QLabel *alarmaBottleFilled;
+    QLabel *alarmaCanFilled;
 
     // Latas
-    QTimer *timer2;  // Temporizador para el proceso de llenado de latas
-    // QProgressBar *barra;  // Barra de progreso para mostrar el llenado de latas
-    QPushButton *reset2;   // Botón para reiniciar el temporizador de latas
-    QPushButton *stop2;    // Botón para detener el temporizador de latas
-    QPushButton *almacen2;  // Botón para almacenar latas llenadas
-    QPushButton *continuar2;  // Botón para continuar el temporizador de latas
-    int contador2{};  // Contador de latas llenadas
-    int latas{};      // Número total de latas a llenar
-    int latas_almacen{};  // Número de latas almacenadas
-    QLabel *labelLatasLlenadas;  // Etiqueta para mostrar la cantidad de latas llenadas
-    QLabel *labelLatasAlmacen;   // Etiqueta para mostrar la cantidad de latas almacenadas
+    QTimer *timer2;
+    QPushButton *reset2;
+    QPushButton *stop2;
+    QPushButton *almacen2;
+    QPushButton *continuar2;
+    int contador2{};
+    int latas{};
+    int latas_almacen{};
+    QLabel *labelLatasLlenadas;
+    QLabel *labelLatasAlmacen;
     QLabel *lataLabel;
+
 private slots:
-    void bottle_process();     // Proceso de llenado de botellas
-    void can_process();        // Proceso de llenado de latas
-    void reset_timer1();       // Reiniciar temporizador de botellas
-    void stop_timer1();        // Detener temporizador de botellas
-    void continue_timer1();    // Continuar temporizador de botellas
-    void reset_timer2();       // Reiniciar temporizador de latas
-    void stop_timer2();        // Detener temporizador de latas
+    void bottle_process();
+    void can_process();
+    void reset_timer1();
+    void stop_timer1();
+    void continue_timer1();
+    void reset_timer2();
+    void stop_timer2();
     void continue_timer2();
+
 signals:
     void setValue(int senal);
     void setValue1(int senal1);
@@ -74,6 +80,8 @@ public:
 public slots:
     void almacenarBotellas();
     void almacenarLatas();
+    void alarma_stopBotellas();
+    void alarma_stopLatas();
 
 };
 #endif // BOTTLEFILL_H
