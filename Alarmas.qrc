@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Alarms/almacen_0.png</file>
+        <file>Alarms/almacen_1.png</file>
+        <file>Alarms/botella_0.png</file>
+        <file>Alarms/botella_1.png</file>
+        <file>Alarms/botellas_almacen_0.png</file>
+        <file>Alarms/botellas_almacen_1.png</file>
+        <file>Alarms/lata_0.png</file>
+        <file>Alarms/lata_1.png</file>
+        <file>Alarms/latas_almacen_0.png</file>
+        <file>Alarms/latas_almacen_1.png</file>
+    </qresource>
+</RCC>
