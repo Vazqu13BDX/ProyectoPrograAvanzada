@@ -11,12 +11,12 @@
 
 #include "bottlefill.h"
 #include "envios.h"
+#include "almacen_botellas.h"
 
 
 class QTabBar;
 class QLabel;
 class QPushButton;
-
 
 class MainWindow : public QMainWindow
 {
@@ -25,6 +25,9 @@ class MainWindow : public QMainWindow
 private:
     QTabBar *tab_bar;
 
+    QLabel *fondoProceso;
+   // QLabel *Almacen;
+
     QWidget *contenidoPestana1;
     QLabel *labelPestana1;
     QVBoxLayout *layoutPestana1;
@@ -32,6 +35,11 @@ private:
     QWidget *contenidoPestana2;
     QLabel *labelPestana2;
     QVBoxLayout *layoutPestana2;
+
+
+    QWidget *contenidoPestana3;
+    QLabel *labelPestana3;
+    QVBoxLayout *layoutPestana3;
 
     QVBoxLayout *layoutPrincipal;
     QWidget *centralWidget;
@@ -45,6 +53,10 @@ private:
 
     BottleFill *bottle{new BottleFill};
     Envios *envios{new Envios};
+    Almacen *almacen{new Almacen};
+
+
+
 
 
 public:
@@ -53,6 +65,7 @@ public:
     ~MainWindow();
     void inicioPlanta();
     void llamadoPagina(int llamada);
+    void mostrarVentanaBienvenida();
 
 
 public slots:
