@@ -10,14 +10,22 @@ MainWindow::MainWindow(QWidget *parent)
 
     mostrarVentanaBienvenida();
 
+   // fondoProceso = new QLabel(this);
+   // QPixmap imagenFondo(":/Imagenes/Fondo_Proceso.png"); // Carga la imagen del archivo de recursos images.qrc
+   // fondoProceso->setPixmap(imagenFondo.scaled(1536,864,Qt::KeepAspectRatio));
+   // fondoProceso->setGeometry(0,0, 1536, 864);
+
+
     tab_bar = new QTabBar(this);
     tab_bar->addTab("Proceso");
     tab_bar->addTab("Envios y Rastreo");
+    tab_bar->addTab("Almacen");
     connect(tab_bar, SIGNAL(currentChanged(int)), this, SLOT(cambiarPestana(int)));
 
     // Crear los contenidos de las pestañas
     bottle= new BottleFill;
     envios= new Envios;
+    almacen = new Almacen;
 
     bottle->show();
 
@@ -41,6 +49,10 @@ void MainWindow::cambiarPestana(int index){
     else if (index == 1) {
         llamadoPagina(2);
     }
+    else if(index == 2)
+    {
+        llamadoPagina(3);
+    }
 
 
 }
@@ -57,6 +69,7 @@ void MainWindow::llamadoPagina(int llamada)
     if(llamada==1){
         bottle->show();
         envios->hide();
+        almacen->hide();
         layoutPrincipal->addWidget(tab_bar);
         layoutPrincipal->addWidget(bottle);
         centralWidget->setLayout(layoutPrincipal);
@@ -65,11 +78,19 @@ void MainWindow::llamadoPagina(int llamada)
     else if(llamada==2){
         bottle->hide();
         envios->show();
+        almacen->hide();
         layoutPrincipal->addWidget(tab_bar);
         layoutPrincipal->addWidget(envios);
         centralWidget->setLayout(layoutPrincipal);
-
-
+    }
+    else if(llamada==3)
+    {
+        bottle->hide();
+        envios->hide();
+        almacen->show();
+        layoutPrincipal->addWidget(tab_bar);
+        layoutPrincipal->addWidget(almacen);
+        centralWidget->setLayout(layoutPrincipal);
     }
 
 }
@@ -81,3 +102,4 @@ void MainWindow::mostrarVentanaBienvenida() {
         mensajeBienvenida.setIcon(QMessageBox::Information);
     mensajeBienvenida.exec();
 }
+
