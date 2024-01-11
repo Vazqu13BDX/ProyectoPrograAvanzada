@@ -7,10 +7,15 @@
 #include <QProgressBar>
 #include <QPushButton>
 #include <QLabel>
+#include <QFont>
+
+#include "almacen_botellas.h"
+
 
 
 class QPushButton;
 class QProgressBar;
+class Almacen;
 
 class BottleFill : public QWidget
 {
@@ -23,6 +28,11 @@ public:
 
 private:
     //Botellas
+
+    QLabel *bottleBackground;
+
+    Almacen *counter;
+
     QProgressBar *barra;
     QProgressBar *barra1;
     QTimer *timer1;
@@ -69,6 +79,7 @@ signals:
     void setValue(int senal);
     void setValue1(int senal1);
     void sendALmacen(int i, int i1);
+    void counterUpdate(int);
 
 public:
     void bottle_filler();
@@ -83,6 +94,7 @@ public slots:
     void alarma_stopLatas();
     void alarma_resetBotellas();
     void alarma_resetLatas();
+    void sendCounter();
 
 };
 #endif // BOTTLEFILL_H
