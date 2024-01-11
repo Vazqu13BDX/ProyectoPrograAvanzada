@@ -6,7 +6,9 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
     setWindowTitle("Planta de Refrescos");
-    setMinimumSize(800,800);
+    setMinimumSize(1536,864);
+
+    mostrarVentanaBienvenida();
 
     tab_bar = new QTabBar(this);
     tab_bar->addTab("Proceso");
@@ -66,8 +68,16 @@ void MainWindow::llamadoPagina(int llamada)
         layoutPrincipal->addWidget(tab_bar);
         layoutPrincipal->addWidget(envios);
         centralWidget->setLayout(layoutPrincipal);
-        //connect(bottle, &BottleFill::sendALmacen, envios, &Envios::recibeAlmacen);
+
 
     }
 
+}
+
+void MainWindow::mostrarVentanaBienvenida() {
+    QMessageBox mensajeBienvenida;
+    mensajeBienvenida.setWindowTitle("Bienvenido");
+    mensajeBienvenida.setText("¡Bienvenido a la Llenadora de refrescos!");
+        mensajeBienvenida.setIcon(QMessageBox::Information);
+    mensajeBienvenida.exec();
 }
