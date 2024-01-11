@@ -19,7 +19,7 @@ BottleFill::BottleFill(QWidget *parent)
     //-----------------------Main Labels--------------------------------imagenes-----------
 
     botellaLabel = new QLabel(this);
-    QPixmap imagen0(":/Images/botella_1"); // Carga la imagen del archivo de recursos images.qrc
+    QPixmap imagen0(":/Images/botella_1.png"); // Carga la imagen del archivo de recursos images.qrc
     botellaLabel->setPixmap(imagen0.scaled(200,180,Qt::KeepAspectRatio));
     botellaLabel->setGeometry(50, 100, 500, 500);
 
@@ -49,11 +49,13 @@ BottleFill::BottleFill(QWidget *parent)
     reset1 = new QPushButton("RESET Bottles", this);
     reset1->setGeometry(10,100,120,70);
     connect(reset1, SIGNAL(clicked(bool)), this, SLOT(reset_timer1()));
+    connect(reset1, SIGNAL(clicked(bool)), this, SLOT(alarma_resetBotellas()));
 
     stop1 = new QPushButton("STOP Bottles", this);
     stop1->setGeometry(10,0,120,70);
     connect(stop1, SIGNAL(clicked(bool)), this, SLOT(stop_timer1()));
     connect(stop1, SIGNAL(clicked(bool)), this, SLOT(alarma_stopBotellas()));
+
 
     continuar1 = new QPushButton("Continue Bottles", this);
     continuar1->setGeometry(140, 100, 120,70);
@@ -92,6 +94,7 @@ BottleFill::BottleFill(QWidget *parent)
     reset2 = new QPushButton("RESET L", this);
     reset2->setGeometry(500,100,120,70);
     connect(reset2, SIGNAL(clicked(bool)), this, SLOT(reset_timer2()));
+    connect(reset2, SIGNAL(clicked(bool)), this, SLOT(alarma_resetLatas()));
 
     stop2 = new QPushButton("STOP L", this);
     stop2->setGeometry(500,0,120,70);
@@ -145,6 +148,9 @@ void BottleFill::reset_timer1()
 {
     contador1 = 0;
     botellas = 0;
+
+    labelBotellasLlenadas->setText("Botellas Llenadas: 0");
+
 
     QPixmap alarma3(":/Alarms/botellas_almacen_0.png");
     alarmaBottleFilled->setPixmap(alarma3.scaled(100,100,Qt::KeepAspectRatio));
@@ -272,6 +278,9 @@ void BottleFill::reset_timer2()
     latas = 0;
     timer2->start();
 
+    labelLatasLlenadas->setText("Latas Llenadas: 0");
+
+
     QPixmap alarma4(":/Alarms/latas_almacen_0.png");
     alarmaCanFilled->setPixmap(alarma4.scaled(100,100,Qt::KeepAspectRatio));
     alarmaCanFilled->setGeometry(1050, 120, 100, 100);
@@ -335,6 +344,18 @@ void BottleFill::alarma_stopBotellas()
 void BottleFill::alarma_stopLatas()
 {
     QPixmap alarma2(":/Alarms/lata_1.png");
+    alarma_stopLata->setPixmap(alarma2.scaled(100,100,Qt::KeepAspectRatio));
+    alarma_stopLata->setGeometry(1050, 0, 100, 100);
+}
+void BottleFill::alarma_resetBotellas()
+{
+    QPixmap alarma1(":/Alarms/botella_0.png");
+    alarma_stopBotella->setPixmap(alarma1.scaled(100,100,Qt::KeepAspectRatio));
+    alarma_stopBotella->setGeometry(900, 0, 100, 100);
+}
+void BottleFill::alarma_resetLatas()
+{
+    QPixmap alarma2(":/Alarms/lata_0.png");
     alarma_stopLata->setPixmap(alarma2.scaled(100,100,Qt::KeepAspectRatio));
     alarma_stopLata->setGeometry(1050, 0, 100, 100);
 }
