@@ -11,7 +11,6 @@
 
 class QPushButton;
 class QProgressBar;
-//class QLabel:
 
 class BottleFill : public QWidget
 {
@@ -19,8 +18,8 @@ class BottleFill : public QWidget
 
 public:
 
-    explicit BottleFill(QWidget *parent = nullptr);
-    ~BottleFill();
+    explicit BottleFill(QWidget *parent = nullptr); //Constructor
+    ~BottleFill(); //Desctructor
 
 private:
     //Botellas
@@ -82,6 +81,8 @@ public slots:
     void almacenarLatas();
     void alarma_stopBotellas();
     void alarma_stopLatas();
+    void alarma_resetBotellas();
+    void alarma_resetLatas();
 
 };
 #endif // BOTTLEFILL_H
