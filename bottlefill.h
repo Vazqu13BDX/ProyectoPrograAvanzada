@@ -82,8 +82,9 @@ public:
 
     void bottle_filler();
     void can_filler();
-    inline int getLatasValue() { return latas_almacen; }   // Obtener cantidad de latas almacenadas
-    inline int getBotellasValue() { return botellas_almacen; }  // Obtener cantidad de botellas almacenadas
+    int getLatasValue();   // Obtener cantidad de latas almacenadas
+    int getBotellasValue();  // Obtener cantidad de botellas almacenadas
+    void reiniciaTodo();
 
 public slots:
 
@@ -94,6 +95,8 @@ public slots:
     void alarma_stopLatas();
     void alarma_resetBotellas();
     void alarma_resetLatas();
+    void recibeSignalEnvio(bool);
 
 };
 #endif // BOTTLEFILL_H
+
