@@ -26,10 +26,11 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         bottlefill.h bottlefill.cpp
 
 
-        envios.h
-        envios.cpp
+
+
         Imagenes.qrc
         Alarms.qrc
+        almacen_botellas.cpp almacen_botellas.h
 
     )
 # Define target properties for Android with Qt 6 as:

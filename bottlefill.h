@@ -66,6 +66,7 @@ private:
     QLabel *lataLabel;
 
 private slots:
+
     void bottle_process();
     void can_process();
     void reset_timer1();
@@ -78,15 +79,16 @@ private slots:
 signals:
     void setValue(int senal);
     void setValue1(int senal1);
-    void sendALmacen(int i, int i1);
     void counterUpdate(int);
+    void counterUpdate1(int);
 
 public:
+
     void bottle_filler();
     void can_filler();
     inline int getLatasValue() { return latas_almacen; }   // Obtener cantidad de latas almacenadas
     inline int getBotellasValue() { return botellas_almacen; }  // Obtener cantidad de botellas almacenadas
-    friend class Envios;
+
 public slots:
     void almacenarBotellas();
     void almacenarLatas();
@@ -94,7 +96,6 @@ public slots:
     void alarma_stopLatas();
     void alarma_resetBotellas();
     void alarma_resetLatas();
-    void sendCounter();
 
 };
 #endif // BOTTLEFILL_H

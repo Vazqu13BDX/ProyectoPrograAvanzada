@@ -18,13 +18,11 @@ MainWindow::MainWindow(QWidget *parent)
 
     tab_bar = new QTabBar(this);
     tab_bar->addTab("Proceso");
-    tab_bar->addTab("Envios y Rastreo");
     tab_bar->addTab("Almacen");
     connect(tab_bar, SIGNAL(currentChanged(int)), this, SLOT(cambiarPestana(int)));
 
     // Crear los contenidos de las pestañas
     bottle= new BottleFill;
-    envios= new Envios;
     almacen = new Almacen;
 
     bottle->show();
@@ -38,8 +36,8 @@ MainWindow::MainWindow(QWidget *parent)
     centralWidget->setLayout(layoutPrincipal);
     setCentralWidget(centralWidget);
 
-
-    connect(bottle, &BottleFill::sendALmacen, envios, &Envios::recibeAlmacen);
+    connect(bottle, &BottleFill::counterUpdate, almacen, &Almacen::counterBottleReceiver);
+    connect(bottle, &BottleFill::counterUpdate1, almacen, &Almacen::counterLataReciver);
 
 }
 void MainWindow::cambiarPestana(int index){
@@ -49,11 +47,6 @@ void MainWindow::cambiarPestana(int index){
     else if (index == 1) {
         llamadoPagina(2);
     }
-    else if(index == 2)
-    {
-        llamadoPagina(3);
-    }
-
 
 }
 MainWindow::~MainWindow(){
@@ -68,7 +61,6 @@ void MainWindow::llamadoPagina(int llamada)
     }
     if(llamada==1){
         bottle->show();
-        envios->hide();
         almacen->hide();
         layoutPrincipal->addWidget(tab_bar);
         layoutPrincipal->addWidget(bottle);
@@ -77,16 +69,6 @@ void MainWindow::llamadoPagina(int llamada)
     }
     else if(llamada==2){
         bottle->hide();
-        envios->show();
-        almacen->hide();
-        layoutPrincipal->addWidget(tab_bar);
-        layoutPrincipal->addWidget(envios);
-        centralWidget->setLayout(layoutPrincipal);
-    }
-    else if(llamada==3)
-    {
-        bottle->hide();
-        envios->hide();
         almacen->show();
         layoutPrincipal->addWidget(tab_bar);
         layoutPrincipal->addWidget(almacen);
