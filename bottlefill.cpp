@@ -5,6 +5,7 @@ using namespace std;
 BottleFill::BottleFill(QWidget *parent)
     : QWidget(parent)
 {
+    //-----------------Definicion de Timers------------------------------------------------
     timer1 = new QTimer{this};
     connect(timer1, SIGNAL(timeout()),this, SLOT(bottle_process()));
     timer1->setInterval(500);
@@ -169,8 +170,8 @@ BottleFill::BottleFill(QWidget *parent)
     continuar1->setToolTip("Reanuda el Llenado detenido");
     continuar2->setToolTip("Reanuda el Llenado detenido");
 
- /*   connect(counter, &Almacen::resetEnviar, this, &BottleFill::resetEnvios);*/ //connect que quise usar para conectar la señal del boton de envio de almacen a el slot que reinicie
-                                                                                    //todo en la ventana de llenado
+    /*   connect(counter, &Almacen::resetEnviar, this, &BottleFill::resetEnvios);*/ //connect que quise usar para conectar la señal del boton de envio de almacen a el slot que reinicie
+    //todo en la ventana de llenado
 
 
 }
@@ -327,6 +328,20 @@ void BottleFill::can_filler()
     }
 }
 
+void BottleFill::reiniciaTodo()
+{
+    barra->setValue(0);
+    barra1->setValue(0);
+    reset_timer1();
+    reset_timer2();
+    contador1 = 0;
+    botellas = 0;
+    botellas_almacen = 0;
+    contador2 = 0;
+    latas = 0;
+    latas_almacen = 0;
+}
+
 
 void BottleFill::reset_timer2()
 {
@@ -429,12 +444,12 @@ void BottleFill::alarma_resetLatas()
     alarma_stopLata->setGeometry(770, 80, 100, 100);
 }
 
-//void BottleFill::resetEnvios() //metodo que quise usar para reiniciar todo despues de usar el boton de envio
-//{
-//    qInfo() << "REINICIANDO TODO";
-//    barra->setValue(0);
-//    barra1->setValue(0);
-//    reset_timer1();
-//    reset_timer2();
+void BottleFill::recibeSignalEnvio(bool valor)
+{
+    if(valor == true)
+    {
+        qInfo () << "webos a todos";
+        reiniciaTodo();
+    }
+}
 
-//}
