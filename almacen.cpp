@@ -252,6 +252,87 @@ void Almacen::getNumber1(double i)
     }
 }
 
+void Almacen::reiniciaLabelBotellas()
+{
+
+    QPixmap imagenCaja1(":/Images/Cajas_0.png"); // Carga la imagen del archivo de recursos images.qrc
+    caja1->setPixmap(imagenCaja1.scaled(170,170,Qt::KeepAspectRatio));
+    caja1->setGeometry(880,150, 170, 170);
+
+
+    QPixmap imagenCaja2(":/Images/Cajas_0.png"); // Carga la imagen del archivo de recursos images.qrc
+    caja2->setPixmap(imagenCaja2.scaled(170,170,Qt::KeepAspectRatio));
+    caja2->setGeometry(1020,150, 170, 170);
+
+
+    QPixmap imagenCaja3(":/Images/Cajas_0.png"); // Carga la imagen del archivo de recursos images.qrc
+    caja3->setPixmap(imagenCaja3.scaled(170,170,Qt::KeepAspectRatio));
+    caja3->setGeometry(1160,150, 170, 170);
+
+
+    QPixmap imagenCaja4(":/Images/Cajas_0.png"); // Carga la imagen del archivo de recursos images.qrc
+    caja4->setPixmap(imagenCaja4.scaled(170,170,Qt::KeepAspectRatio));
+    caja4->setGeometry(880,310, 170, 170);
+
+
+    QPixmap imagenCaja5(":/Images/Cajas_0.png"); // Carga la imagen del archivo de recursos images.qrc
+    caja5->setPixmap(imagenCaja5.scaled(170,170,Qt::KeepAspectRatio));
+    caja5->setGeometry(1020,310, 170, 170);
+
+
+    QPixmap imagenCaja6(":/Images/Cajas_0.png"); // Carga la imagen del archivo de recursos images.qrc
+    caja6->setPixmap(imagenCaja6.scaled(170,170,Qt::KeepAspectRatio));
+    caja6->setGeometry(1160,310, 170, 170);
+
+
+    QPixmap imagenCaja7(":/Images/Cajas_0.png"); // Carga la imagen del archivo de recursos images.qrc
+    caja7->setPixmap(imagenCaja7.scaled(170,170,Qt::KeepAspectRatio));
+    caja7->setGeometry(880,470, 170, 170);
+
+
+    QPixmap imagenCaja8(":/Images/Cajas_0.png"); // Carga la imagen del archivo de recursos images.qrc
+    caja8->setPixmap(imagenCaja8.scaled(170,170,Qt::KeepAspectRatio));
+    caja8->setGeometry(1020,470, 170, 170);
+
+
+    QPixmap imagenCaja9(":/Images/Cajas_0.png"); // Carga la imagen del archivo de recursos images.qrc
+    caja9->setPixmap(imagenCaja9.scaled(170,170,Qt::KeepAspectRatio));
+    caja9->setGeometry(1160,470, 170, 170);
+}
+
+void Almacen::reiniciaLabelLatas()
+{
+
+    QPixmap imagenLata1(":/Images/Cajas_0.png"); // Carga la imagen del archivo de recursos images.qrc
+    lata1->setPixmap(imagenLata1.scaled(170,170,Qt::KeepAspectRatio));
+    lata1->setGeometry(100,240, 170, 170);
+
+
+    QPixmap imagenLata2(":/Images/Cajas_0.png"); // Carga la imagen del archivo de recursos images.qrc
+    lata2->setPixmap(imagenLata2.scaled(170,170,Qt::KeepAspectRatio));
+    lata2->setGeometry(250,240, 170, 170);
+
+
+    QPixmap imagenLata3(":/Images/Cajas_0.png"); // Carga la imagen del archivo de recursos images.qrc
+    lata3->setPixmap(imagenLata3.scaled(170,170,Qt::KeepAspectRatio));
+    lata3->setGeometry(100,370, 170, 170);
+
+
+    QPixmap imagenLata4(":/Images/Cajas_0.png"); // Carga la imagen del archivo de recursos images.qrc
+    lata4->setPixmap(imagenLata4.scaled(170,170,Qt::KeepAspectRatio));
+    lata4->setGeometry(250,370, 170, 170);
+
+
+    QPixmap imagenLata5(":/Images/Cajas_0.png"); // Carga la imagen del archivo de recursos images.qrc
+    lata5->setPixmap(imagenLata5.scaled(170,170,Qt::KeepAspectRatio));
+    lata5->setGeometry(100,500, 170, 170);
+
+
+    QPixmap imagenLata6(":/Images/Cajas_0.png"); // Carga la imagen del archivo de recursos images.qrc
+    lata6->setPixmap(imagenLata6.scaled(170,170,Qt::KeepAspectRatio));
+    lata6->setGeometry(250,500, 170, 170);
+}
+
 void Almacen::counterBottleReceiver(int count)
 {
     qInfo() << "Almacen:" << count;
@@ -309,10 +390,10 @@ void Almacen::onComboBoxChange(int index)
 }
 
 void Almacen::InicioEnvio()
-{   if(valueL==0&&valueB==0){
+{   if(valueL==0||valueB==0){
                 qInfo()<<"No se puede realizar pedido";
         }
-        else if(valueL==1&&valueB==1){
+        else if((valueL==1||valueB==1) && valor==0){
                 for(size_t i{0};i<=10;i++){
                     valor++;
                     barra->setValue(valor);
@@ -328,5 +409,14 @@ void Almacen::InicioEnvio()
                     }
                 }
              }
-
+        if((valueB == 9)&&(valueL == 6))
+        {
+                emit signalEnvio(true);
+                reiniciaLabelBotellas();
+                reiniciaLabelLatas();
+        }
+        else
+        {
+                emit signalEnvio(false);
+        }
 }
