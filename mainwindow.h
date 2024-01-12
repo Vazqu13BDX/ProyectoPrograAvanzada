@@ -2,8 +2,6 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
-#include <QMainWindow>
 #include <QtWidgets>
 #include <QLabel>
 #include <QPushButton>
@@ -11,7 +9,6 @@
 
 #include "bottlefill.h"
 #include "almacen.h"
-#include "almacen_botellas.h"
 
 
 class QTabBar;
@@ -39,15 +36,10 @@ private:
     QVBoxLayout *layoutPrincipal;
     QWidget *centralWidget;
 
-
-
     int i{0};
 
     BottleFill *bottle{new BottleFill};
     Almacen *almacen{new Almacen};
-
-
-
 
 
 public:

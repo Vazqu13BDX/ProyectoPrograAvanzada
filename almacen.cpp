@@ -4,7 +4,8 @@ Almacen::Almacen(QWidget *parent)
     : QWidget{parent}
 {
 
-
+    Timer=new QTimer{this};
+    connect(Timer, &QTimer::timeout, this, &Almacen::InicioEnvio);
     almacen_background = new QLabel(this);
     QPixmap imagenFondo(":/Images/Fondo_Almacen.png"); // Carga la imagen del archivo de recursos images.qrc
     almacen_background->setPixmap(imagenFondo.scaled(1536,864,Qt::KeepAspectRatio));
@@ -55,43 +56,39 @@ Almacen::Almacen(QWidget *parent)
     caja9->setPixmap(imagenCaja9.scaled(170,170,Qt::KeepAspectRatio));
     caja9->setGeometry(1160,470, 170, 170);
 
-      connect(this, &Almacen::changeImage, this, &Almacen::updateImage);
+    connect(this, &Almacen::changeImage, this, &Almacen::updateImage);
 
+    lata1 = new QLabel(this);
+    QPixmap imagenLata1(":/Images/Cajas_0.png"); // Carga la imagen del archivo de recursos images.qrc
+    lata1->setPixmap(imagenLata1.scaled(170,170,Qt::KeepAspectRatio));
+    lata1->setGeometry(100,240, 170, 170);
 
+    lata2 = new QLabel(this);
+    QPixmap imagenLata2(":/Images/Cajas_0.png"); // Carga la imagen del archivo de recursos images.qrc
+    lata2->setPixmap(imagenLata2.scaled(170,170,Qt::KeepAspectRatio));
+    lata2->setGeometry(250,240, 170, 170);
 
-      lata1 = new QLabel(this);
-      QPixmap imagenLata1(":/Images/Cajas_0.png"); // Carga la imagen del archivo de recursos images.qrc
-      lata1->setPixmap(imagenLata1.scaled(170,170,Qt::KeepAspectRatio));
-      lata1->setGeometry(100,240, 170, 170);
+    lata3 = new QLabel(this);
+    QPixmap imagenLata3(":/Images/Cajas_0.png"); // Carga la imagen del archivo de recursos images.qrc
+    lata3->setPixmap(imagenLata3.scaled(170,170,Qt::KeepAspectRatio));
+    lata3->setGeometry(100,370, 170, 170);
 
-      lata2 = new QLabel(this);
-      QPixmap imagenLata2(":/Images/Cajas_0.png"); // Carga la imagen del archivo de recursos images.qrc
-      lata2->setPixmap(imagenLata2.scaled(170,170,Qt::KeepAspectRatio));
-      lata2->setGeometry(250,240, 170, 170);
+    lata4 = new QLabel(this);
+    QPixmap imagenLata4(":/Images/Cajas_0.png"); // Carga la imagen del archivo de recursos images.qrc
+    lata4->setPixmap(imagenLata4.scaled(170,170,Qt::KeepAspectRatio));
+    lata4->setGeometry(250,370, 170, 170);
 
-      lata3 = new QLabel(this);
-      QPixmap imagenLata3(":/Images/Cajas_0.png"); // Carga la imagen del archivo de recursos images.qrc
-      lata3->setPixmap(imagenLata3.scaled(170,170,Qt::KeepAspectRatio));
-      lata3->setGeometry(100,370, 170, 170);
+    lata5 = new QLabel(this);
+    QPixmap imagenLata5(":/Images/Cajas_0.png"); // Carga la imagen del archivo de recursos images.qrc
+    lata5->setPixmap(imagenLata5.scaled(170,170,Qt::KeepAspectRatio));
+    lata5->setGeometry(100,500, 170, 170);
 
-      lata4 = new QLabel(this);
-      QPixmap imagenLata4(":/Images/Cajas_0.png"); // Carga la imagen del archivo de recursos images.qrc
-      lata4->setPixmap(imagenLata4.scaled(170,170,Qt::KeepAspectRatio));
-      lata4->setGeometry(250,370, 170, 170);
+    lata6 = new QLabel(this);
+    QPixmap imagenLata6(":/Images/Cajas_0.png"); // Carga la imagen del archivo de recursos images.qrc
+    lata6->setPixmap(imagenLata6.scaled(170,170,Qt::KeepAspectRatio));
+    lata6->setGeometry(250,500, 170, 170);
 
-      lata5 = new QLabel(this);
-      QPixmap imagenLata5(":/Images/Cajas_0.png"); // Carga la imagen del archivo de recursos images.qrc
-      lata5->setPixmap(imagenLata5.scaled(170,170,Qt::KeepAspectRatio));
-      lata5->setGeometry(100,500, 170, 170);
-
-      lata6 = new QLabel(this);
-      QPixmap imagenLata6(":/Images/Cajas_0.png"); // Carga la imagen del archivo de recursos images.qrc
-      lata6->setPixmap(imagenLata6.scaled(170,170,Qt::KeepAspectRatio));
-      lata6->setGeometry(250,500, 170, 170);
-
-
-      connect(this, &Almacen::changeImage2, this, &Almacen::updateImage2);
-
+    connect(this, &Almacen::changeImage2, this, &Almacen::updateImage2);
 
     numberInput = new QLineEdit(this);
     numberInput->setGeometry(10,10,100,50);
@@ -122,11 +119,11 @@ Almacen::Almacen(QWidget *parent)
     comb->addItem("Destino 2");
     comb->addItem("Destino 3");
     comb->setGeometry(1200,30,100,20);
+    connect(comb, &QComboBox::currentIndexChanged, this, &Almacen::onComboBoxChange);
 
-//-------------------------------------------------------boton que implemente para enviar la merca y reiniciar todo en la ventana de llenado
-    enviar = new QPushButton("ENVIAR", this);
-    enviar->setGeometry(1200,100,100,50);
-    connect(enviar, &QPushButton::clicked, this, &Almacen::enviarFunc);
+    enviar=new QPushButton{"ENVIAR",this};
+    enviar->setGeometry(1200,60,100,20);
+    connect(enviar, &QPushButton::clicked, this, &Almacen::InicioEnvio);
 }
 
 void Almacen::updateImage()
@@ -234,12 +231,6 @@ void Almacen::updateImage2()
 
 }
 
-void Almacen::enviarFunc() //funcion para emitir la señal que reiniciara todo despues del enviado
-{
-    qInfo() << "enviando";
-    emit resetEnviar();
-}
-
 
 void Almacen::getNumber(double i)
 {
@@ -265,7 +256,6 @@ void Almacen::counterBottleReceiver(int count)
 {
     qInfo() << "Almacen:" << count;
     valueB=count;
-
     emit changeImage();
 }
 
@@ -273,7 +263,6 @@ void Almacen::counterLataReceiver(int coun)
 {
     qInfo()<<"Almacen 1: "<<coun;
     valueL=coun;
-
     emit changeImage2();
 
 }
@@ -303,4 +292,27 @@ void Almacen::onProjectionButtonClicked1()
             projectionLabel2->setText("Entrada no válida. Introduce un número.");
         }
         getNumber1(number1);
+}
+
+void Almacen::onComboBoxChange(int index)
+{
+        if (index==0){
+            Timer->setInterval(20000);
+        }
+        else if(index==1){
+            Timer->setInterval(15000);
+        }
+        else if (index==2){
+            Timer->setInterval(10000);
+        }
+}
+
+void Almacen::InicioEnvio()
+{
+        for(size_t i{0};i<=10;i++){
+            valor=valor+1;
+            barra->setValue(valor);
+            Timer->start();
+        }
+
 }

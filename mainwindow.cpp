@@ -75,7 +75,7 @@ void MainWindow::mostrarVentanaBienvenida() {
     QMessageBox mensajeBienvenida;
     mensajeBienvenida.setWindowTitle("Bienvenido");
     mensajeBienvenida.setText("¡Bienvenido a la Llenadora de refrescos!");
-        mensajeBienvenida.setIcon(QMessageBox::Information);
+    mensajeBienvenida.setIcon(QMessageBox::Information);
     mensajeBienvenida.exec();
 }
 
