@@ -37,7 +37,7 @@ private:
     QLabel *caja7;
     QLabel *caja8;
     QLabel *caja9;
-//Labels para las cajas de las latas
+    //Labels para las cajas de las latas
     QLabel *lata1;
     QLabel *lata2;
     QLabel *lata3;
@@ -64,11 +64,14 @@ public:
     explicit Almacen(QWidget *parent = nullptr);
     void getNumber(double i);
     void getNumber1(double i);
+    void reiniciaLabelBotellas();
+    void reiniciaLabelLatas();
 
 signals:
 
     void changeImage();
     void changeImage2();
+    void signalEnvio(bool);
 
 
 private slots:
@@ -76,6 +79,7 @@ private slots:
     void onProjectionButtonClicked();
     void onProjectionButtonClicked1();
     void onComboBoxChange(int index);
+
 
 public slots:
     void InicioEnvio();
