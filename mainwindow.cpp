@@ -32,6 +32,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(bottle, &BottleFill::counterUpdate, almacen, &Almacen::counterBottleReceiver);
     connect(bottle, &BottleFill::counterUpdate1, almacen, &Almacen::counterLataReceiver);
+    connect(almacen, &Almacen::signalEnvio, bottle, &BottleFill::recibeSignalEnvio);
 
 }
 void MainWindow::cambiarPestana(int index){
@@ -75,7 +76,7 @@ void MainWindow::mostrarVentanaBienvenida() {
     QMessageBox mensajeBienvenida;
     mensajeBienvenida.setWindowTitle("Bienvenido");
     mensajeBienvenida.setText("¡Bienvenido a la Llenadora de refrescos!");
-    mensajeBienvenida.setIcon(QMessageBox::Information);
+        mensajeBienvenida.setIcon(QMessageBox::Information);
     mensajeBienvenida.exec();
 }
 
