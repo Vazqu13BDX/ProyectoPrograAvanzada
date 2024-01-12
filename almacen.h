@@ -12,6 +12,8 @@
 #include <QProgressBar>
 
 #include <QPushButton>
+#include <QMainWindow>
+#include <QtWidgets>
 
 #include "bottlefill.h"
 
@@ -45,7 +47,7 @@ private:
 
     QPushButton *enviar; //Boton que implemente para enviar la mercancia
 
-    int valor{};
+    int valor{0};
 
     QComboBox *comb;
     QProgressBar *barra;

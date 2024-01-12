@@ -297,22 +297,36 @@ void Almacen::onProjectionButtonClicked1()
 void Almacen::onComboBoxChange(int index)
 {
         if (index==0){
-            Timer->setInterval(20000);
+            Timer->start(10000);
         }
         else if(index==1){
-            Timer->setInterval(15000);
+
+            Timer->start(8000);
         }
         else if (index==2){
-            Timer->setInterval(10000);
+            Timer->start(5000);
         }
 }
 
 void Almacen::InicioEnvio()
-{
-        for(size_t i{0};i<=10;i++){
-            valor=valor+1;
-            barra->setValue(valor);
-            Timer->start();
+{   if(valueL==0&&valueB==0){
+                qInfo()<<"No se puede realizar pedido";
         }
+        else if(valueL==1&&valueB==1){
+                for(size_t i{0};i<=10;i++){
+                    valor++;
+                    barra->setValue(valor);
+                    if(valor==100){
+                        barra->setValue(0);
+                        valueB=valueB-valueB;
+                        valueL=valueL-valueL;
+                        QMessageBox mensaje;
+                        mensaje.setWindowTitle("Finalizado");
+                        mensaje.setText("¡Se entrego el Paquete!");
+                        mensaje.setIcon(QMessageBox::Information);
+                        mensaje.exec();
+                    }
+                }
+             }
 
 }
