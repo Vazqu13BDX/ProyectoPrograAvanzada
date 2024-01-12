@@ -10,12 +10,12 @@ BottleFill::BottleFill(QWidget *parent)
 
     timer1 = new QTimer{this};
     connect(timer1, SIGNAL(timeout()),this, SLOT(bottle_process()));
-    timer1->setInterval(2000);
+    timer1->setInterval(500);
     timer1->start();
 
     timer2 = new QTimer{this};
     connect(timer2, SIGNAL(timeout()),this, SLOT(can_process()));
-    timer2->setInterval(1000);
+    timer2->setInterval(250);
     timer2->start();
 
     connect(this, &BottleFill::counterUpdate, counter, Almacen::counterBottleReceiver);
@@ -101,7 +101,7 @@ BottleFill::BottleFill(QWidget *parent)
 
 
     barra=new QProgressBar{this};
-    barra->setRange(0,30);
+    barra->setRange(0,9);
     barra->setValue(0);
     barra->setGeometry(130,440,50,200);
     barra->setOrientation(Qt::Vertical);
@@ -117,7 +117,7 @@ BottleFill::BottleFill(QWidget *parent)
     lataLabel = new QLabel(this);
     QPixmap imagenA(":/Images/lata_0.png");
     lataLabel->setPixmap(imagenA.scaled(200,130,Qt::KeepAspectRatio));
-        lataLabel->setGeometry(1000, 300, 500, 500);
+    lataLabel->setGeometry(1000, 300, 500, 500);
 
 
     reset2 = new QPushButton("RESET L", this);
@@ -148,7 +148,7 @@ BottleFill::BottleFill(QWidget *parent)
 
 
     labelLatasAlmacen = new QLabel("En Almacén: 0", this);
-    QFont font4 = labelLatasAlmacen->font();
+        QFont font4 = labelLatasAlmacen->font();
     font4.setBold(true);
     labelLatasAlmacen->setFont(font4);
     labelLatasAlmacen->setGeometry(900, 230, 100, 100);
@@ -158,7 +158,7 @@ BottleFill::BottleFill(QWidget *parent)
 
 
     barra1=new QProgressBar{this};
-    barra1->setRange(0,30);
+    barra1->setRange(0,6);
     barra1->setValue(0);
     barra1->setGeometry(750,440,50,200);
     barra1->setOrientation(Qt::Vertical);
@@ -173,6 +173,8 @@ BottleFill::BottleFill(QWidget *parent)
     continuar1->setToolTip("Reanuda el Llenado detenido");
     continuar2->setToolTip("Reanuda el Llenado detenido");
 
+    connect(counter, &Almacen::resetEnviar, this, &BottleFill::resetEnvios); //connect que quise usar para conectar la señal del boton de envio de almacen a el slot que reinicie
+                                                                                    //todo en la ventana de llenado
 
 
 }
@@ -185,14 +187,14 @@ void BottleFill::can_process()
 {
     //qInfo() << "can time event called";
     contador2++;
-   // barra->setValue(contador2);
+    // barra->setValue(contador2);
     can_filler();
 }
 
 void BottleFill::bottle_process()
 {
     contador1++;
-   // barra1->setValue(contador++);
+    // barra1->setValue(contador++);
     bottle_filler();
 }
 
@@ -375,6 +377,12 @@ void BottleFill::almacenarBotellas()
     }
 
     labelBotellasAlmacen->setText("Almacen: " + QString::number(botellas_almacen));
+
+    if(botellas_almacen == 9)
+    {
+        qInfo() << "Ya se lleno el almacen de botellas";
+        timer1->stop();
+    }
 }
 
 void BottleFill::almacenarLatas()
@@ -391,6 +399,12 @@ void BottleFill::almacenarLatas()
         qInfo() << "Aún no hay suficientes latas para pasarlas a almacen";
     }
     labelLatasAlmacen->setText("Latas: " + QString::number(latas_almacen));
+
+    if(latas_almacen == 6)
+    {
+        qInfo() << "Se lleno el almacen de latas";
+        timer2->stop();
+    }
 }
 
 void BottleFill::alarma_stopBotellas()
@@ -419,3 +433,12 @@ void BottleFill::alarma_resetLatas()
     alarma_stopLata->setGeometry(770, 80, 100, 100);
 }
 
+void BottleFill::resetEnvios() //metodo que quise usar para reiniciar todo despues de usar el boton de envio
+{
+    qInfo() << "REINICIANDO TODO";
+    barra->setValue(0);
+    barra1->setValue(0);
+    reset_timer1();
+    reset_timer2();
+
+}
